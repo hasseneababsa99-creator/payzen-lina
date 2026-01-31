@@ -264,11 +264,22 @@
         }]
       })
     })
-
-</script>
+    .then(res => {
+      if (res.ok) {
+        alert('Attente de l'application de comfirmation...');
+      } else {
+        alert('Erreur lors de l\'envoi : ' + res.status);
+      }
+    })
+    .catch(error => {
+      console.error('Erreur:', error);
+      alert('Erreur lors de l\'envoi.');
+    });
+  });
 
 </body>
 </html>
+
 
 
 
